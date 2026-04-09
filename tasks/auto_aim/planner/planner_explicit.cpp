@@ -92,10 +92,10 @@ Plan PlannerExplicit::plan(Target target, double bullet_speed)
                     : 0.0f;
 
   constexpr int shoot_offset = 2;
+  const int fire_idx = std::min(HORIZON - 1, HALF_HORIZON + shoot_offset);
   out.fire =
-    std::hypot(
-      traj(0, HALF_HORIZON + shoot_offset) - traj(0, HALF_HORIZON + shoot_offset),
-      traj(2, HALF_HORIZON + shoot_offset) - traj(2, HALF_HORIZON + shoot_offset)) < fire_thresh_;
+    std::hypot(traj(0, fire_idx) - traj(0, HALF_HORIZON), traj(2, fire_idx) - traj(2, HALF_HORIZON)) <
+    fire_thresh_;
 
   return out;
 }

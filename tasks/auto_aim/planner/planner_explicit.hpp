@@ -13,6 +13,7 @@ namespace auto_aim
 class PlannerExplicit
 {
 public:
+  Eigen::Vector4d debug_xyza;
   explicit PlannerExplicit(const std::string & config_path);
 
   Plan plan(Target target, double bullet_speed);
@@ -32,8 +33,6 @@ private:
   double explicit_min_T_;
   double explicit_max_T_;
   double explicit_step_T_;
-
-  Eigen::Vector4d debug_xyza;
 
   Eigen::Matrix<double, 2, 1> aim(const Target & target, double bullet_speed);
 
